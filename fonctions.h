@@ -68,7 +68,7 @@ float divisionReelle(int a, int b)
 {
     return (float)a/(float)b;
 }
-
+/*Les bits dans le tableau doit être classés  de point faible au point for*/
 float puissanceBinaNega(int *tab, int taille)
 {
     int i;
@@ -78,6 +78,18 @@ float puissanceBinaNega(int *tab, int taille)
             somme+= divisionReelle(1,(tab[i]<<(i+1)));
     }
     return somme;
+}
+void mirroir(int tab[], int taille)
+{
+    int i,aux;
+    
+    for(i = 0 ; i< taille/2; i++)
+    {
+        aux = tab[i];
+        tab[i] = tab[taille-1-i];
+        tab[taille-1-i] = aux;
+    }
+
 }
 
 float conversFloat(int *tab, int precision)
