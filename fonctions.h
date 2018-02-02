@@ -54,14 +54,16 @@ int sommetab(int * tab, int taille)
     return s;
 }
 
+
 float puissantBinaPositif(int *tab, int taille)
 {
     int i;
     float somme =0.0;
-    for(i = 0 ; i< taille; i++)
+    for(i = taille -1 ; i >=0; i--)
         somme += tab[i]<<i;
     return somme;
 }
+
 float divisionReelle(int a, int b)
 {
     return (float)a/(float)b;
