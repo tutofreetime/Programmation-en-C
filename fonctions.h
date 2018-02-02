@@ -58,7 +58,7 @@ float puissantBinaPositif(int *tab, int taille)
 {
     int i;
     float somme =0.0;
-    for(i = 0 ; i< taille; i++)
+    for(i = taille -1 ; i >=0; i--)
         somme += tab[i]<<i;
     return somme;
 }
