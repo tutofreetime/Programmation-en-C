@@ -42,7 +42,7 @@ void afficheTab(int tab[], int taille)
 {
     int i;
     for(i = 0 ; i < taille; i++)
-        printf(" %d ",tab[i]);
+        printf("%d",tab[i]);
 }
 
 int sommetab(int * tab, int taille)
@@ -54,33 +54,52 @@ int sommetab(int * tab, int taille)
     return s;
 }
 
-int puissantBinaPositif(int *tab, int taille)
+float puissantBinaPositif(int *tab, int taille)
 {
     int i;
-    int somme =0;
+    float somme =0.0;
     for(i = 0 ; i < taille; i++)
         somme += tab[i]<<i;
     return somme;
 }
+float divisionReelle(int a, int b)
+{
+    return (float)a/(float)b;
+}
+float puissanceBinaNega(int *tab, int taille)
+{
+    int i;
+    float somme =0.0;
+    for(i = 0 ; i < taille; i++){
+        if(tab[i]!=0)
+            somme+= divisionReelle(1,tab[i]<<(i+1));
+    }
+    printf("\n");
+    return somme;
+}
+
 float conversFloat(int *tab, int precision)
 {
-    //int signe =tab[0];
+    int signe =tab[0];
     int exposant[8];
     int mantisse[23];
     int i;
     float f =0.0;
+    //Signe
+
+    if(signe == 0)
+        signe = 1;
+    else  
+        signe = -1;
     //Exporter l'exposant
-    //int exp = 8/2 + 8 % 2!=0;
-    //int expTab[exp] =(int *)malloc(exp*sizeof(int));
+
     for(i = 1; i < 9; i++){
         exposant[i] = tab[i];
     }
     //Exporter la mantisse
-    //int Mantexp = 23/2 + 23 % 2!=0;
-    //int MantTab[exp] =(int *)malloc(Mantexp*sizeof(int));
     for(; i < precision ; i++){
-        mantisse[i] = tab[i];
+        mantisse[i%23] = tab[i];
     }
-    return f;
 
+    return f = signe * (1 + puissanceBinaNega(mantisse,23))* puissantBinaPositif(exposant,8);
 }
