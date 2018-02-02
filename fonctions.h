@@ -58,7 +58,7 @@ float puissantBinaPositif(int *tab, int taille)
 {
     int i;
     float somme =0.0;
-    for(i = 0 ; i < taille; i++)
+    for(i = 0 ; i< taille; i++)
         somme += tab[i]<<i;
     return somme;
 }
@@ -74,7 +74,6 @@ float puissanceBinaNega(int *tab, int taille)
         if(tab[i]!=0)
             somme+= divisionReelle(1,tab[i]<<(i+1));
     }
-    printf("\n");
     return somme;
 }
 
@@ -93,13 +92,28 @@ float conversFloat(int *tab, int precision)
         signe = -1;
     //Exporter l'exposant
 
-    for(i = 1; i < 9; i++){
-        exposant[i] = tab[i];
+    for(i = 9-1; i > 0; i--){
+        exposant[i-1] = tab[i];
     }
     //Exporter la mantisse
-    for(; i < precision ; i++){
-        mantisse[i%23] = tab[i];
+    int j =0;
+    for(i = precision-1; i > 9 ; i--){
+        mantisse[j] = tab[i];
+        j++;
     }
+    /*
 
-    return f = signe * (1 + puissanceBinaNega(mantisse,23))* puissantBinaPositif(exposant,8);
+    printf("\n%d|",signe);
+    afficheTab(exposant,8);
+    printf("|");
+    afficheTab(mantisse,23);
+    printf("\n\n");
+
+    printf("signe : \n%d",signe);
+    printf("\nExposant %f : ",(puissantBinaPositif(exposant,8)));
+    afficheTab(exposant,8);
+    printf("\nMantisse %f : ",1 + puissanceBinaNega(mantisse,23));
+    afficheTab(mantisse,23);
+    printf("\n");
+    return f = signe * (1 + puissanceBinaNega(mantisse,23))* (puissantBinaPositif(exposant,8)-127);*/
 }
