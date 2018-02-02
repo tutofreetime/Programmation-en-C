@@ -72,7 +72,7 @@ float puissanceBinaNega(int *tab, int taille)
     float somme =0.0;
     for(i = 0 ; i < taille; i++){
         if(tab[i]!=0)
-            somme+= divisionReelle(1,tab[i]<<(i+1));
+            somme+= divisionReelle(1,(tab[i]<<(i+1)));
     }
     return somme;
 }
