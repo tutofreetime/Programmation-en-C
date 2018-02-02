@@ -54,23 +54,33 @@ int sommetab(int * tab, int taille)
     return s;
 }
 
+int puissantBinaPositif(int *tab, int taille)
+{
+    int i;
+    int somme =0;
+    for(i = 0 ; i < taille; i++)
+        somme += tab[i]<<i;
+    return somme;
+}
 float conversFloat(int *tab, int precision)
 {
-    int signe =tab[0];
+    //int signe =tab[0];
     int exposant[8];
     int mantisse[23];
     int i;
     float f =0.0;
     //Exporter l'exposant
-    int exp = 8/2 + 
+    //int exp = 8/2 + 8 % 2!=0;
+    //int expTab[exp] =(int *)malloc(exp*sizeof(int));
     for(i = 1; i < 9; i++){
         exposant[i] = tab[i];
     }
     //Exporter la mantisse
-    for(; i < precision ; i++)
+    //int Mantexp = 23/2 + 23 % 2!=0;
+    //int MantTab[exp] =(int *)malloc(Mantexp*sizeof(int));
+    for(; i < precision ; i++){
         mantisse[i] = tab[i];
-
-    
+    }
     return f;
 
 }
