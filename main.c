@@ -7,11 +7,11 @@ int main()
 
 
 int tab2[32]= {0,1,0,0,0,0,0,1,1,0,0,0,1,1,0,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0};
-int posit[4] ={1,1,1,0};
+int posit[8] ={1,0,0,0,0,0,0,0};
 int negat[6] = {0,0,0,0,1,1};
 //int tab1[32] = {0,1,0,0,0,0,0,0,0,0,0,1,0,1,1,1,1,0,1,1,1,0,0,0,0,1,0,1,0,0,0,0,};
 int taille2 = 32;
-printf("Flottant %f\n",puissantBinaPositif(posit,4));
+printf("Flottant %f\n",puissantBinaPositif(posit,8));
 
 printf("\n");
 

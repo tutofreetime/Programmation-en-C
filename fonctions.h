@@ -66,6 +66,7 @@ float divisionReelle(int a, int b)
 {
     return (float)a/(float)b;
 }
+
 float puissanceBinaNega(int *tab, int taille)
 {
     int i;
