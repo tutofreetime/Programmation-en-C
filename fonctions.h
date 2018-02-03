@@ -123,3 +123,17 @@ float conversFloat(int *tab, int precision)
     return f;
 }
 /*--------------------------------------------------------------------------------*/
+//Methode courte et simple
+float methodeSimple(int * tab, int precision)
+{
+    int i;
+    float f = 0.0;
+    int n=0;
+    for(i = 0 ; i < precision; i++)
+        n += tab[precision-1-i]<<i;
+    
+    f = *(float *)&n;
+
+    return f;
+    
+}
