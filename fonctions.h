@@ -57,11 +57,7 @@ int sommetab(int * tab, int taille)
 int puissantBinaPositif(int *tab, int taille)
 {
     int i;
-<<<<<<< HEAD
-    float somme =0.0;
-=======
     int somme =0;
->>>>>>> puissancePositive
     for(i = taille -1 ; i >=0; i--)
         somme += tab[i]<<i;
     return somme;
