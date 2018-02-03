@@ -4,22 +4,12 @@
 
 int main()
 {
-
-    int tab2[32]= {0,1,0,0,0,0,0,1,1,0,0,0,1,1,0,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0};
-    int posit[8] ={0,0,0,0,0,0,0,1};
-    afficheTab(posit,8);
-    printf("\n");
-
-    mirroir(posit,8);
-    afficheTab(posit,8);
-        printf("\n");
-
-    int negat[6] = {0,0,0,0,1,1};
-    //int tab1[32] = {0,1,0,0,0,0,0,0,0,0,0,1,0,1,1,1,1,0,1,1,1,0,0,0,0,1,0,1,0,0,0,0,};
+    int tab1[32] = {0,1,0,0,0,0,1,0,1,1,0,1,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    int tab2[32] = {0,1,0,0,0,0,0,1,1,0,0,0,1,1,0,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0};
     int taille2 = 32;
-    //printf("Flottant %f\n",puissantBinaPositif(posit,8));
-
-    printf("\n");
+    
+    printf("%f \n",conversFloat(tab1,taille2));
+    printf("%f \n",conversFloat(tab2,taille2));
 
     return 0;
 }
