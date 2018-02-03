@@ -26,6 +26,7 @@ void conversion(int *tab, int taille, int n)//n est la puissance de la base 2^n
     for(i = 0 ; i < tailleAux ; i++)
         printf(" %c ",dtochar(tabaux[i]));
 }
+/*------------------------- TP1 -----------------------------------------*/
 float convers(int *tab, int precision)
 {
     int i,n=0;
@@ -35,7 +36,6 @@ float convers(int *tab, int precision)
         n+=tab[31-i]<<i;
     f= *(float *)&n;
     return f;
-
 }
 
 void afficheTab(int tab[], int taille)
@@ -54,19 +54,24 @@ int sommetab(int * tab, int taille)
     return s;
 }
 
-float puissantBinaPositif(int *tab, int taille)
+int puissantBinaPositif(int *tab, int taille)
 {
     int i;
+<<<<<<< HEAD
     float somme =0.0;
+=======
+    int somme =0;
+>>>>>>> puissancePositive
     for(i = taille -1 ; i >=0; i--)
         somme += tab[i]<<i;
     return somme;
 }
+
 float divisionReelle(int a, int b)
 {
     return (float)a/(float)b;
 }
-
+/*Les bits dans le tableau doit être classés  de point faible au point for*/
 float puissanceBinaNega(int *tab, int taille)
 {
     int i;
@@ -77,6 +82,18 @@ float puissanceBinaNega(int *tab, int taille)
     }
     return somme;
 }
+/*Mirroir, fonction*/
+void mirroir(int tab[], int taille)
+{
+    int i,aux;
+    
+    for(i = 0 ; i< taille/2; i++)
+    {
+        aux = tab[i];
+        tab[i] = tab[taille-1-i];
+        tab[taille-1-i] = aux;
+    }
+}
 
 float conversFloat(int *tab, int precision)
 {
@@ -84,37 +101,29 @@ float conversFloat(int *tab, int precision)
     int exposant[8];
     int mantisse[23];
     int i;
-    float f =0.0;
-    //Signe
-
+    float f = 0.0;
+    /*------------------------Gestion de signe --------------------------------------*/
     if(signe == 0)
         signe = 1;
     else  
         signe = -1;
-    //Exporter l'exposant
-
-    for(i = 9-1; i > 0; i--){
+    /*------------------------Gestion de l'exposant ---------------------------------*/
+    for(i = 1; i < 9; i++){
         exposant[i-1] = tab[i];
     }
-    //Exporter la mantisse
+    /*Mirroir qui inverse le tableau */
+    mirroir(exposant,8);
+    float expos = 1<<(puissantBinaPositif(exposant,8) - 127);
+    /*------------------------Gestion de Mantisse -----------------------------------*/
     int j =0;
-    for(i = precision-1; i > 9 ; i--){
+    for(; i < 32 ; i++){
         mantisse[j] = tab[i];
         j++;
     }
-    /*
+    float mant = puissanceBinaNega(mantisse,23);
 
-    printf("\n%d|",signe);
-    afficheTab(exposant,8);
-    printf("|");
-    afficheTab(mantisse,23);
-    printf("\n\n");
+    f = signe * (1 + mant)*expos;
 
-    printf("signe : \n%d",signe);
-    printf("\nExposant %f : ",(puissantBinaPositif(exposant,8)));
-    afficheTab(exposant,8);
-    printf("\nMantisse %f : ",1 + puissanceBinaNega(mantisse,23));
-    afficheTab(mantisse,23);
-    printf("\n");
-    return f = signe * (1 + puissanceBinaNega(mantisse,23))* (puissantBinaPositif(exposant,8)-127);*/
+    return f;
 }
+/*--------------------------------------------------------------------------------*/
